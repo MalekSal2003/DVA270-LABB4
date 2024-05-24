@@ -1,4 +1,4 @@
-#include "list.h"
+#include "grupp10.h"
 nrfx_uarte_t instance = NRFX_UARTE_INSTANCE(0);
 
 
@@ -72,7 +72,7 @@ void play_game(char user_choice)
 void start_game_grupp10(void)
 {
 nrfx_uarte_rx(&instance, &uarte_buffer, 1);
-    
+
     while (is_running() && (user_score < 5) && (computer_score < 5)) // Kontrollera även poäng
     {
         //uint8_t clear_screen[] = CLEAR_SCREEN;
@@ -85,7 +85,7 @@ nrfx_uarte_rx(&instance, &uarte_buffer, 1);
     }
 
     if (user_score >= 5) {
-        
+
         char Result_message[] = "Grattis! Du har vunnit spelet!\n\r";
         send_message(Result_message);
     } else if (computer_score >= 5) {
@@ -93,7 +93,7 @@ nrfx_uarte_rx(&instance, &uarte_buffer, 1);
         send_message(Result_message);
     }
 
-    
+
     char End_message[] = "Programmet avslutas!\n\r";
     send_message(End_message);
     return 0;
